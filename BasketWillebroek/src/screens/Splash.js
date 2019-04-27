@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, Image} from 'react-native';
+import SplashScreen from "react-native-splash-screen";
 
 export default class Splash extends Component {
+
   render() {
     return (
         <View style={styles.container}>
