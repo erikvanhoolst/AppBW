@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F8921E',
+    //backgroundColor: '#F8921E',
+    backgroundColor: 'white'
   }
 });
