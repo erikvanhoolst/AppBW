@@ -7,43 +7,39 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import {createStackNavigator, createAppContainer} from "react-navigation";
+import Home from "./src/screens/Home";
+import Splash from "./src/screens/Splash";
 
 type Props = {};
+
+const AppNavigator = createStackNavigator(
+    {
+      Home: {
+        screen: Home,
+        navigationOptions: {
+          header: null
+        }
+      },
+      Splash: {
+        screen: Splash,
+        navigationOptions: {
+          header: null
+        }
+      }
+    },
+    {
+      initialRouteName: "Splash",
+    });
+
+const AppContainer = createAppContainer(AppNavigator);
+
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+        <AppContainer/>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+
