@@ -41,7 +41,7 @@ const BottomNavigator = createBottomTabNavigator(
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({ focused, tintColor}) => {
+        tabBarIcon: ({ tintColor}) => {
           const { routeName } = navigation.state;
           let IconComponent = Icons;
           let iconName;
