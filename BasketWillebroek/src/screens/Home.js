@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Button, Platform} from 'react-native';
+import NavBar from '../components/NavBar';
 
 export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Basket Willebroek</Text>
+        <NavBar/>
+        <View style={styles.mainContainer}>
+
+        </View>
       </View>
     )
   }
@@ -14,7 +18,13 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+  },
+  headerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: Platform.OS === "ios" ? 30 : 0
+  },
+  mainContainer: {
+
   }
 });

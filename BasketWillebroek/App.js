@@ -30,7 +30,7 @@ const AppNavigator = createStackNavigator(
       }
     },
     {
-      initialRouteName: "Splash",
+      initialRouteName: "Home",
     });
 
 const AppContainer = createAppContainer(AppNavigator);
