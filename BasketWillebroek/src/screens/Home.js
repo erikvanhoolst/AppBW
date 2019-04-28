@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, Platform} from 'react-native';
 import NavBar from '../components/NavBar';
 
+
 export default class Home extends Component {
   render() {
     return (
