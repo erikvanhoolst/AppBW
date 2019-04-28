@@ -7,14 +7,15 @@
  */
 
 import React, {Component} from 'react';
-import {createStackNavigator, createAppContainer} from "react-navigation";
+import {createStackNavigator, createAppContainer, createBottomTabNavigator, createSwitchNavigator} from "react-navigation";
 import Home from "./src/screens/Home";
 import Splash from "./src/screens/Splash";
 import SplashScreen from 'react-native-splash-screen';
+import Icons from 'react-native-vector-icons/Ionicons';
 
 type Props = {};
 
-const AppNavigator = createStackNavigator(
+const TestNavigator = createStackNavigator(
     {
       Home: {
         screen: Home,
@@ -33,7 +34,38 @@ const AppNavigator = createStackNavigator(
       initialRouteName: "Home",
     });
 
-const AppContainer = createAppContainer(AppNavigator);
+const BottomNavigator = createBottomTabNavigator(
+    {
+      Home: { screen: Home },
+      Splash: { screen: Splash },
+    },
+    {
+      defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ tintColor}) => {
+          const { routeName } = navigation.state;
+          let IconComponent = Icons;
+          let iconName;
+          if (routeName === 'Home') {
+            iconName = 'ios-home';
+          } else if (routeName === 'Splash'){
+            iconName = 'ios-basketball';
+          }
+          return <IconComponent name={iconName} size={25} color={tintColor} />;
+        }
+      }),
+      tabBarOptions: {
+        activeTintColor: '#F8921E',
+        inactiveTintColor: 'gray'
+      }
+
+    }
+);
+
+const RootSwitch = createSwitchNavigator({Home, BottomNavigator});
+
+const AppContainer = createAppContainer(BottomNavigator);
+
+
 
 export default class App extends Component<Props> {
   componentDidMount(): void {
