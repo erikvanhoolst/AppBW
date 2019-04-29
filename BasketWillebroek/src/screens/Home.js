@@ -13,6 +13,7 @@ export default class Home extends Component {
           <GameCard/>
           <GameCard/>
           <GameCard/>
+          <GameCard/>
         </View>
       </View>
     )
