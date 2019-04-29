@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Image} from 'react-native';
+import {StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert} from 'react-native';
 
 export default class GameCard extends Component {
+  test(): void {
+    //Alert.alert("Highlight clicked");
+  }
+
   render() {
     return (
-      <View style={styles.cardContainer}>
+      <TouchableHighlight style={styles.cardContainer} onPress={this.test} underlayColor={'#F8921E'} activeOpacity={1}>
         <View style={styles.container}>
           <View style={styles.leftAndRightView}>
             <Image source={require('../assets/FullLogoBW.png')} style={{width: 100, height: 50}}/>
@@ -21,10 +25,10 @@ export default class GameCard extends Component {
             </View>
           </View>
           <View style={styles.leftAndRightView}>
-            <Image source={require('../assets/okcLogo.png')} style={{width: 50, height: 100, resizeMode: 'contain'}}/>
+            <Image source={require('../assets/okcLogo.png')} style={{width: 80, height: 80, resizeMode: 'center'}}/>
           </View>
         </View>
-      </View>
+      </TouchableHighlight>
     )
   }
 }
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5},
     shadowOpacity: 0.6,
     shadowRadius: 3,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   container: {
     flex: 1,
