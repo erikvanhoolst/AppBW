@@ -2,8 +2,21 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert} from 'react-native';
 
 export default class GameCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      match1: [],
+    };
+
+    //console.log("Constructor van gamecard: " + this.state.match1);
+  }
+
+  componentDidMount(): void {
+    this.setState({match1: this.props.match});
+  }
+
   test(): void {
-    //Alert.alert("Highlight clicked");
+
   }
 
   render() {
@@ -15,7 +28,7 @@ export default class GameCard extends Component {
           </View>
           <View style={styles.midView}>
             <View style={styles.topMid}>
-              <Text>20:30</Text>
+              <Text>{this.state.match1}</Text>
             </View>
             <View style={styles.centerMid}>
               <Text>110-123</Text>
