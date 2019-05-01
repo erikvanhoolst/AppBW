@@ -9,23 +9,25 @@ import {Match} from "../model/Match";
 
 export default class Home extends Component {
   async componentDidMount(): void {
-    let matchesCall = await getTeamMatchesByGuid(guidHerenD).then();
+    await getTeamMatchesByGuid(guidHerenD).then(res => this.setState({matches: res}));
     this.setState({loading: false});
-    this.setState({matches: matchesCall});
-    //console.log(matchesCall);
-    //console.log(this.state.matches);
+    console.log(this.state.matches);
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
       matches: [],
     };
+
+    //setTimeout(async () => getTeamMatchesByGuid(guidHerenD).then(response => this.setState({matches: response})), 3000);
+    //getTeamMatchesByGuid(guidHerenD).then(response => this.setState({matches: response}));
 
     //this.state.matches = getTeamMatchesByGuid(guidHerenD);
     //console.log("constructor van home: "+ this.state.matches);
   }
+
 
   render() {
     if(this.state.loading){
@@ -44,9 +46,9 @@ export default class Home extends Component {
         <NavBar/>
         <View style={styles.mainContainer}>
           <GameCard match={this.state.matches[1]}/>
-          <GameCard/>
-          <GameCard/>
-          <GameCard/>
+          <GameCard match={this.state.matches[1]}/>
+          <GameCard match={this.state.matches[1]}/>
+          <GameCard match={this.state.matches[1]}/>
         </View>
       </View>
     )

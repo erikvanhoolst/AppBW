@@ -5,18 +5,14 @@ export default class GameCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      match1: [],
+      match: this.props.match,
     };
 
-    //console.log("Constructor van gamecard: " + this.state.match1);
-  }
-
-  componentDidMount(): void {
-    this.setState({match1: this.props.match});
+    console.log("Constructor van gamecard: " + this.state.match);
   }
 
   test(): void {
-
+    Alert.alert(this.props.match);
   }
 
   render() {
@@ -28,7 +24,7 @@ export default class GameCard extends Component {
           </View>
           <View style={styles.midView}>
             <View style={styles.topMid}>
-              <Text>{this.state.match1}</Text>
+              <Text>{this.state.match}</Text>
             </View>
             <View style={styles.centerMid}>
               <Text>110-123</Text>

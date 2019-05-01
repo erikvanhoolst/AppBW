@@ -14,8 +14,7 @@ export async function getTeamMatchesByGuid(teamGuid: string): Match[] {
     let responseJson = await response.json();
     //console.log(responseJson);
     if (response.status === 200) {
-      let stringjson = JSON.stringify(responseJson);
-      return JSON.parse(stringjson);
+      return responseJson
     } else {
       return null;
     }
