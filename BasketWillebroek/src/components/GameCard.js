@@ -1,30 +1,39 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert} from 'react-native';
+import {Match} from "../model/Match";
 
 export default class GameCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      match: this.props.match,
+      loading: true,
+    };
+  }
+
   test(): void {
-    //Alert.alert("Highlight clicked");
+    Alert.alert('Match Details', this.state.match);
   }
 
   render() {
     return (
       <TouchableHighlight style={styles.cardContainer} onPress={this.test} underlayColor={'#F8921E'} activeOpacity={1}>
         <View style={styles.container}>
-          <View style={styles.leftAndRightView}>
+          <View style={styles.leftAndRight}>
             <Image source={require('../assets/FullLogoBW.png')} style={{width: 100, height: 50}}/>
           </View>
           <View style={styles.midView}>
             <View style={styles.topMid}>
-              <Text>20:30</Text>
+              <Text>{this.state.match.beginTijd}</Text>
             </View>
             <View style={styles.centerMid}>
-              <Text>110-123</Text>
+              <Text>{this.state.match.uitslag}</Text>
             </View>
             <View style={styles.bottomMid}>
-              <Text>De Schalk</Text>
+              <Text>{this.state.match.accNaam}</Text>
             </View>
           </View>
-          <View style={styles.leftAndRightView}>
+          <View style={styles.leftAndRight}>
             <Image source={require('../assets/okcLogo.png')} style={{width: 80, height: 80, resizeMode: 'center'}}/>
           </View>
         </View>
@@ -38,7 +47,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    height: 110,
+    height: '18%',
     borderStyle: 'solid',
     borderRadius: 10,
     borderWidth: 2,
@@ -54,11 +63,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center'
   },
-  leftAndRightView: {
+  leftAndRight: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign: 'center'
   },
   midView: {
     flex: 1,
@@ -73,19 +83,21 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderBottomWidth: 1,
     justifyContent: 'center',
-    alignItems: 'center'
-
+    alignItems: 'center',
+    textAlign: 'center'
   },
   centerMid: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: 'center'
   },
   bottomMid: {
     flex: 1,
     borderStyle: 'solid',
     borderTopWidth: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: 'center'
   }
 });

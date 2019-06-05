@@ -7,32 +7,13 @@
  */
 
 import React, {Component} from 'react';
-import {createStackNavigator, createAppContainer, createBottomTabNavigator, createSwitchNavigator} from "react-navigation";
+import { createAppContainer, createBottomTabNavigator, createSwitchNavigator} from "react-navigation";
 import Home from "./src/screens/Home";
 import Splash from "./src/screens/Splash";
 import SplashScreen from 'react-native-splash-screen';
 import Icons from 'react-native-vector-icons/Ionicons';
 
 type Props = {};
-
-const TestNavigator = createStackNavigator(
-    {
-      Home: {
-        screen: Home,
-        navigationOptions: {
-          header: null
-        }
-      },
-      Splash: {
-        screen: Splash,
-        navigationOptions: {
-          header: null
-        }
-      }
-    },
-    {
-      initialRouteName: "Home",
-    });
 
 const BottomNavigator = createBottomTabNavigator(
     {
