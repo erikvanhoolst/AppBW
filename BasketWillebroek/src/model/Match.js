@@ -30,4 +30,8 @@ export class Match {
     this.uitslag = '';
     this.beginTijd = '';
   }
+
+  toMatchFormat(): string {
+    return 'Match: ' + this.tTNaam + ' vs. ' + this.tUNaam;
+  }
 }
