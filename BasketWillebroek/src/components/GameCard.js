@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     height: '20%',
+    maxHeight: '20%',
     borderStyle: 'solid',
     borderRadius: 10,
     borderWidth: 2,

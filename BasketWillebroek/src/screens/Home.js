@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Platform, ActivityIndicator, FlatList, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Platform, ActivityIndicator, ScrollView} from 'react-native';
 import NavBar from '../components/NavBar';
 import GameCard from "../components/GameCard";
 import {getTeamMatchesByGuid} from "../services/GameService";
@@ -37,9 +37,7 @@ export default class Home extends Component {
       <View style={styles.container}>
         <NavBar/>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          <View style={styles.container}>
-            {this.state.matches.map((match, i) => <GameCard key={i} match={match}/>)}
-          </View>
+          {this.state.matches.map((match, i) => <GameCard key={i} match={match}/>)}
         </ScrollView>
       </View>
     )
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   scrollContainer: {
-    flex: 1,
+    // flex: 1,
   },
   loadingIndicator: {
     flex: 1,
