@@ -19,7 +19,7 @@ export default class GameCard extends Component {
       <TouchableHighlight style={styles.cardContainer} onPress={this.test} underlayColor={'#F8921E'} activeOpacity={1}>
         <View style={styles.container}>
           <View style={styles.leftAndRight}>
-            <Image source={require('../assets/FullLogoBW.png')} style={{width: 100, height: 50}}/>
+            <Image source={require('../assets/FullLogoBW.png')} style={styles.logoTeams}/>
             <Text style={styles.textTeams}>{this.state.match.tTNaam}</Text>
           </View>
           <View style={styles.midView}>
@@ -35,7 +35,7 @@ export default class GameCard extends Component {
             </View>
           </View>
           <View style={styles.leftAndRight}>
-            <Image source={require('../assets/okcLogo.png')} style={{width: 80, height: 80, resizeMode: 'stretch'}}/>
+            <Image source={require('../assets/okcLogo.png')} style={styles.logoTeams}/>
             <Text style={styles.textTeams}>{this.state.match.tUNaam}</Text>
           </View>
         </View>
@@ -115,6 +115,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Verdana',
     textAlign: 'center',
     margin: 2
+  },
+  logoTeams: {
+    width: '95%',
+    height: '55%',
+    resizeMode: 'contain',
   }
   
 });

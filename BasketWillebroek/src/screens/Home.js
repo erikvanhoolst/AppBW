@@ -37,7 +37,9 @@ export default class Home extends Component {
       <View style={styles.container}>
         <NavBar/>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          {this.state.matches.map((match, i) => <GameCard key={i} match={match}/>)}
+          <View style={styles.container}>
+            {this.state.matches.map((match, i) => <GameCard key={i} match={match}/>)}
+          </View>
         </ScrollView>
       </View>
     )
@@ -50,7 +52,6 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    
   },
   loadingIndicator: {
     flex: 1,
