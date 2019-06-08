@@ -1,1 +1,21 @@
+export const guidHerenA = "BVBL1173HSE  1";
+export const guidHerenB = "BVBL1173HSE  2";
+export const guidHerenC = "BVBL1173HSE  3";
 export const guidHerenD = "BVBL1173HSE  4";
+export const guidDamesA = "BVBL1173DSE  1";
+export const guidDamesB = "BVBL1173DSE  2";
+export const guidDamesC = "BVBL1173DSE  3";
+export const guidDamesD = "BVBL1173DSE  4";
+export const guidJongensU21A = "BVBL1173J21  1";
+export const guidJongensU21B = "BVBL1173J21  2";
+export const guidJongensU18B = "BVBL1173J18  2";
+export const guidGemengdU14A = "BVBL1173G14  1";
+export const guidGemengdU12A = "BVBL1173G12  1";
+export const guidGemengdU12B = "BVBL1173G12  2";
+export const guidGemengdU12C = "BVBL1173G12  3";
+export const guidGemengdU10A = "BVBL1173G10  1";
+export const guidGemengdU10B = "BVBL1173G10  2";
+export const guidGemengdU8A = "BVBL1173G08  1";
+export const orgIdBasketWillebroek = "BVBL1173";
+export const baseUrl = "http://vblcb.wisseq.eu/VBLCB_WebService/data/";
+

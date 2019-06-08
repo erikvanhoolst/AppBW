@@ -7,12 +7,11 @@ export default class GameCard extends Component {
     super(props);
     this.state = {
       match: this.props.match,
-      loading: true,
     };
   }
 
   test(): void {
-    Alert.alert('Match Details', this.state.match);
+    alert('jeff');
   }
 
   render() {
@@ -21,20 +20,23 @@ export default class GameCard extends Component {
         <View style={styles.container}>
           <View style={styles.leftAndRight}>
             <Image source={require('../assets/FullLogoBW.png')} style={{width: 100, height: 50}}/>
+            <Text style={styles.textTeams}>{this.state.match.tTNaam}</Text>
           </View>
           <View style={styles.midView}>
             <View style={styles.topMid}>
-              <Text>{this.state.match.beginTijd}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.datumString}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.beginTijd}</Text>
             </View>
             <View style={styles.centerMid}>
-              <Text>{this.state.match.uitslag}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.uitslag}</Text>
             </View>
             <View style={styles.bottomMid}>
-              <Text>{this.state.match.accNaam}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.accNaam}</Text>
             </View>
           </View>
           <View style={styles.leftAndRight}>
-            <Image source={require('../assets/okcLogo.png')} style={{width: 80, height: 80, resizeMode: 'center'}}/>
+            <Image source={require('../assets/okcLogo.png')} style={{width: 80, height: 80, resizeMode: 'stretch'}}/>
+            <Text style={styles.textTeams}>{this.state.match.tUNaam}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    height: '18%',
+    height: '20%',
     borderStyle: 'solid',
     borderRadius: 10,
     borderWidth: 2,
@@ -67,8 +69,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center'
+    justifyContent: 'space-evenly',
+    textAlign: 'center',
+    marginTop: '3%',
+    marginBottom: '3%'
   },
   midView: {
     flex: 1,
@@ -99,5 +103,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center'
+  },
+  textTeams: {
+    fontSize: 12,
+    fontFamily: 'Verdana',
+    textAlign: 'center',
+    margin: 4 
+  },
+  textMatchInfo: {
+    fontSize: 13,
+    fontFamily: 'Verdana',
+    textAlign: 'center',
+    margin: 2
   }
+  
 });

@@ -1,5 +1,7 @@
-const baseUrl = "http://vblcb.wisseq.eu/VBLCB_WebService/data/";
+//const baseUrl = "http://vblcb.wisseq.eu/VBLCB_WebService/data/";
+import { baseUrl } from '../assets/values';
 const teamMatchesByGuidUrl = baseUrl + "TeamMatchesByGuid?";
+const orgDetailByGuid = baseUrl + "OrgDetailByGuid";
 
 export async function getTeamMatchesByGuid(teamGuid: string): any {
   try {
