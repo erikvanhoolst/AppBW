@@ -1,18 +1,55 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert} from 'react-native';
-import {Match} from "../model/Match";
+import { StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert } from 'react-native';
+import { Match } from "../model/Match";
 
 export default class GameCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       match: this.props.match,
-      loading: true,
+      uriUit: this.getTeamLogo(this.props.match.tUNaam),
+      uriThuis: this.getTeamLogo(this.props.match.tTNaam),
     };
   }
 
   test(): void {
-    Alert.alert('Match Details', this.state.match);
+    // alert('jeff');
+  }
+
+  getTeamLogo(teamNaam: String): String {
+    let baseUrl = '/Users/erikvanhoolst/Desktop/PersonalProjects/Apps/AppBW/BasketWillebroek/src/assets/';
+
+    if (teamNaam.includes('Basket Willebroek')){
+      return  baseUrl + 'FullLogoBW.png';
+    } else if(teamNaam.includes('Okido Arendonk')){
+      return baseUrl + '/TeamLogos/BBCOkidoArendonk.jpg';
+    } else if(teamNaam.includes('Fellows Ekeren')){
+      return baseUrl + '/TeamLogos/FellowsEkerenBBC.jpg';
+    } else if(teamNaam.includes('Phantoms Basket Boom')){
+      return baseUrl + '/TeamLogos/PhantomsBasketBoom.jpg';
+    } else if(teamNaam.includes('Sobabee Zwijndrecht')){
+      return baseUrl + '/TeamLogos/SobabeeZwijndrecht.jpg';
+    } else if(teamNaam.includes('Schelle')){
+      return baseUrl + '/TeamLogos/BBCSchelle.jpg';
+    } else if(teamNaam.includes('Stabroek')){
+      return baseUrl + '/TeamLogos/BasketStabroek.jpg';
+    } else if(teamNaam.includes('Geranimo Bornem')){
+      return baseUrl + '/TeamLogos/GeranimoBornemBasket.jpg';
+    } else if(teamNaam.includes('Klein-Brabant')){
+      return baseUrl + '/TeamLogos/KleinBrabantBasket.jpg';
+    } else {
+      return baseUrl + '/okcLogo.png';
+    }
+
+    // switch (teamNaam) {
+    //   case teamNaam.includes("Basket Willebroek"):
+    //     return 'baseUrl + '/FullLogoBW.png';
+    //     break;
+    
+    //   default:
+    //     return 'baseUrl + '/okcLogo.png';
+    //     break;
+    // }
   }
 
   render() {
@@ -20,21 +57,24 @@ export default class GameCard extends Component {
       <TouchableHighlight style={styles.cardContainer} onPress={this.test} underlayColor={'#F8921E'} activeOpacity={1}>
         <View style={styles.container}>
           <View style={styles.leftAndRight}>
-            <Image source={require('../assets/FullLogoBW.png')} style={{width: 100, height: 50}}/>
+            <Image source={{uri: this.state.uriThuis}} style={styles.logoTeams}/>
+            <Text style={styles.textTeams}>{this.state.match.tTNaam}</Text>
           </View>
           <View style={styles.midView}>
             <View style={styles.topMid}>
-              <Text>{this.state.match.beginTijd}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.datumString}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.beginTijd}</Text>
             </View>
             <View style={styles.centerMid}>
-              <Text>{this.state.match.uitslag}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.uitslag}</Text>
             </View>
             <View style={styles.bottomMid}>
-              <Text>{this.state.match.accNaam}</Text>
+              <Text style={styles.textMatchInfo}>{this.state.match.accNaam}</Text>
             </View>
           </View>
           <View style={styles.leftAndRight}>
-            <Image source={require('../assets/okcLogo.png')} style={{width: 80, height: 80, resizeMode: 'center'}}/>
+            <Image source={{uri: this.state.uriUit}} style={styles.logoTeams}/>
+            <Text style={styles.textTeams}>{this.state.match.tUNaam}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -47,7 +87,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    height: '18%',
+    height: '17%',
     borderStyle: 'solid',
     borderRadius: 10,
     borderWidth: 2,
@@ -67,8 +107,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center'
+    justifyContent: 'space-evenly',
+    textAlign: 'center',
+    marginTop: '3%',
+    marginBottom: '3%'
   },
   midView: {
     flex: 1,
@@ -99,5 +141,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center'
+  },
+  textTeams: {
+    fontSize: 10,
+    fontFamily: 'Verdana',
+    textAlign: 'center',
+    margin: 4 
+  },
+  textMatchInfo: {
+    fontSize: 11,
+    fontFamily: 'Verdana',
+    textAlign: 'center',
+    margin: 1
+  },
+  logoTeams: {
+    width: '95%',
+    height: '55%',
+    resizeMode: 'contain',
   }
+  
 });

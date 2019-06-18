@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Platform, ActivityIndicator, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Platform, ActivityIndicator, ScrollView} from 'react-native';
 import NavBar from '../components/NavBar';
 import GameCard from "../components/GameCard";
 import {getTeamMatchesByGuid} from "../services/GameService";
 import {guidHerenD} from "../assets/values";
-import {Match} from "../model/Match";
 
 
 export default class Home extends Component {
@@ -27,7 +26,7 @@ export default class Home extends Component {
       return(
           <View style={styles.container}>
             <NavBar/>
-            <View style={[styles.mainContainer, {alignItems: 'center', justifyContent: 'center'}]}>
+            <View style={styles.loadingIndicator}>
               <ActivityIndicator size={'large'}/>
             </View>
           </View>
@@ -37,13 +36,9 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <NavBar/>
-        <View style={styles.mainContainer}>
-          <GameCard match={this.state.matches[0]}/>
-          <GameCard match={this.state.matches[1]}/>
-          <GameCard match={this.state.matches[2]}/>
-          <GameCard match={this.state.matches[3]}/>
-          <GameCard match={this.state.matches[4]}/>
-        </View>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          {this.state.matches.map((match, i) => <GameCard key={i} match={match}/>)}
+        </ScrollView>
       </View>
     )
   }
@@ -51,15 +46,15 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
-  headerContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    marginTop: Platform.OS === "ios" ? 30 : 0
+  scrollContainer: {
+    // TODO: scrollview doesnt fully scroll down behind navigator
+    flex: 1
   },
-  mainContainer: {
+  loadingIndicator: {
     flex: 1,
-
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
