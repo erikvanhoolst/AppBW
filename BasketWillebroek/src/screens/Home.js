@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   scrollContainer: {
-    // flex: 1,
+    // TODO: scrollview doesnt fully scroll down behind navigator
+    flex: 1
   },
   loadingIndicator: {
     flex: 1,

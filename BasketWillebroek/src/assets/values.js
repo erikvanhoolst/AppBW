@@ -17,5 +17,5 @@ export const guidGemengdU10A = "BVBL1173G10  1";
 export const guidGemengdU10B = "BVBL1173G10  2";
 export const guidGemengdU8A = "BVBL1173G08  1";
 export const orgIdBasketWillebroek = "BVBL1173";
-export const baseUrl = "http://vblcb.wisseq.eu/VBLCB_WebService/data/";
+export const baseUrlAPI = "http://vblcb.wisseq.eu/VBLCB_WebService/data/";
 

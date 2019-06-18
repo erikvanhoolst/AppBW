@@ -1,17 +1,55 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert} from 'react-native';
-import {Match} from "../model/Match";
+import { StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert } from 'react-native';
+import { Match } from "../model/Match";
 
 export default class GameCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       match: this.props.match,
+      uriUit: this.getTeamLogo(this.props.match.tUNaam),
+      uriThuis: this.getTeamLogo(this.props.match.tTNaam),
     };
   }
 
   test(): void {
-    alert('jeff');
+    // alert('jeff');
+  }
+
+  getTeamLogo(teamNaam: String): String {
+    let baseUrl = '/Users/erikvanhoolst/Desktop/PersonalProjects/Apps/AppBW/BasketWillebroek/src/assets/';
+
+    if (teamNaam.includes('Basket Willebroek')){
+      return  baseUrl + 'FullLogoBW.png';
+    } else if(teamNaam.includes('Okido Arendonk')){
+      return baseUrl + '/TeamLogos/BBCOkidoArendonk.jpg';
+    } else if(teamNaam.includes('Fellows Ekeren')){
+      return baseUrl + '/TeamLogos/FellowsEkerenBBC.jpg';
+    } else if(teamNaam.includes('Phantoms Basket Boom')){
+      return baseUrl + '/TeamLogos/PhantomsBasketBoom.jpg';
+    } else if(teamNaam.includes('Sobabee Zwijndrecht')){
+      return baseUrl + '/TeamLogos/SobabeeZwijndrecht.jpg';
+    } else if(teamNaam.includes('Schelle')){
+      return baseUrl + '/TeamLogos/BBCSchelle.jpg';
+    } else if(teamNaam.includes('Stabroek')){
+      return baseUrl + '/TeamLogos/BasketStabroek.jpg';
+    } else if(teamNaam.includes('Geranimo Bornem')){
+      return baseUrl + '/TeamLogos/GeranimoBornemBasket.jpg';
+    } else if(teamNaam.includes('Klein-Brabant')){
+      return baseUrl + '/TeamLogos/KleinBrabantBasket.jpg';
+    } else {
+      return baseUrl + '/okcLogo.png';
+    }
+
+    // switch (teamNaam) {
+    //   case teamNaam.includes("Basket Willebroek"):
+    //     return 'baseUrl + '/FullLogoBW.png';
+    //     break;
+    
+    //   default:
+    //     return 'baseUrl + '/okcLogo.png';
+    //     break;
+    // }
   }
 
   render() {
@@ -19,7 +57,7 @@ export default class GameCard extends Component {
       <TouchableHighlight style={styles.cardContainer} onPress={this.test} underlayColor={'#F8921E'} activeOpacity={1}>
         <View style={styles.container}>
           <View style={styles.leftAndRight}>
-            <Image source={require('../assets/FullLogoBW.png')} style={styles.logoTeams}/>
+            <Image source={{uri: this.state.uriThuis}} style={styles.logoTeams}/>
             <Text style={styles.textTeams}>{this.state.match.tTNaam}</Text>
           </View>
           <View style={styles.midView}>
@@ -35,7 +73,7 @@ export default class GameCard extends Component {
             </View>
           </View>
           <View style={styles.leftAndRight}>
-            <Image source={require('../assets/okcLogo.png')} style={styles.logoTeams}/>
+            <Image source={{uri: this.state.uriUit}} style={styles.logoTeams}/>
             <Text style={styles.textTeams}>{this.state.match.tUNaam}</Text>
           </View>
         </View>
@@ -49,8 +87,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    height: '20%',
-    maxHeight: '20%',
+    height: '17%',
     borderStyle: 'solid',
     borderRadius: 10,
     borderWidth: 2,
@@ -106,16 +143,16 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   textTeams: {
-    fontSize: 12,
+    fontSize: 10,
     fontFamily: 'Verdana',
     textAlign: 'center',
     margin: 4 
   },
   textMatchInfo: {
-    fontSize: 13,
+    fontSize: 11,
     fontFamily: 'Verdana',
     textAlign: 'center',
-    margin: 2
+    margin: 1
   },
   logoTeams: {
     width: '95%',
