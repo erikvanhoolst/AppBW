@@ -109376,7 +109376,9 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     container: {
       flex: 1
     },
-    scrollContainer: {},
+    scrollContainer: {
+      flex: 1
+    },
     loadingIndicator: {
       flex: 1,
       alignItems: 'center',
@@ -109705,8 +109707,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       marginTop: 20,
       marginLeft: 20,
       marginRight: 20,
-      height: '19%',
-      maxHeight: '19%',
+      height: '17%',
       borderStyle: 'solid',
       borderRadius: 10,
       borderWidth: 2,
@@ -109771,7 +109772,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       margin: 4
     },
     textMatchInfo: {
-      fontSize: 12,
+      fontSize: 11,
       fontFamily: 'Verdana',
       textAlign: 'center',
       margin: 1
@@ -109839,8 +109840,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var _values = _$$_REQUIRE(_dependencyMap[2], "../assets/values");
 
   var teamMatchesByGuidUrl = _values.baseUrlAPI + "TeamMatchesByGuid?";
-  var orgDetailByGuidUrl = _values.baseUrlAPI + "OrgDetailByGuid";
-  var teamDetailByGuidUrl = _values.baseUrlAPI + "TeamDetailByGuid";
+  var orgDetailByGuidUrl = _values.baseUrlAPI + "OrgDetailByGuid?";
+  var teamDetailByGuidUrl = _values.baseUrlAPI + "TeamDetailByGuid?";
 
   function getTeamMatchesByGuid(teamGuid) {
     var response, responseJson;
@@ -109895,29 +109896,29 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            poules = [];
-            teams = [];
-            _context2.prev = 2;
-            _context2.next = 5;
+            _context2.prev = 0;
+            _context2.next = 3;
             return _regenerator.default.awrap(fetch(teamDetailByGuidUrl + ("teamguid=" + encodeURIComponent(teamGuid)), {
               method: 'GET'
             }));
 
-          case 5:
+          case 3:
             response = _context2.sent;
-            _context2.next = 8;
+            _context2.next = 6;
             return _regenerator.default.awrap(response.json());
 
-          case 8:
+          case 6:
             responseJson = _context2.sent;
-            poules = responseJson.poules;
-            teams = poules.teams.guid;
+            poules = responseJson[0].poules;
+            teams = poules[0].teams;
+            console.log(poules);
+            console.log(teams);
             _context2.next = 16;
             break;
 
           case 13:
             _context2.prev = 13;
-            _context2.t0 = _context2["catch"](2);
+            _context2.t0 = _context2["catch"](0);
             console.error(_context2.t0);
 
           case 16:
@@ -109925,7 +109926,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
             return _context2.stop();
         }
       }
-    }, null, null, [[2, 13]]);
+    }, null, null, [[0, 13]]);
   }
 },706,[1,102,707],"src/services/GameService.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
@@ -109984,25 +109985,31 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   });
   exports.default = void 0;
 
-  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/regenerator"));
 
-  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/classCallCheck"));
 
-  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/createClass"));
 
-  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/possibleConstructorReturn"));
 
-  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/inherits"));
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/getPrototypeOf"));
 
-  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[7], "react"));
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "@babel/runtime/helpers/inherits"));
 
-  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "./../../node_modules/react-transform-hmr/lib/index.js"));
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[8], "react"));
 
-  var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[9], "./../../node_modules/react-transform-hmr/lib/index.js"));
 
-  var _reactNativeSplashScreen = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "react-native-splash-screen"));
+  var _reactNative = _$$_REQUIRE(_dependencyMap[10], "react-native");
 
-  var _NavBar = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "../components/NavBar"));
+  var _reactNativeSplashScreen = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "react-native-splash-screen"));
+
+  var _NavBar = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[12], "../components/NavBar"));
+
+  var _GameService = _$$_REQUIRE(_dependencyMap[13], "../services/GameService");
+
+  var _values = _$$_REQUIRE(_dependencyMap[14], "../assets/values");
 
   var _jsxFileName = "/Users/erikvanhoolst/Desktop/PersonalProjects/Apps/AppBW/BasketWillebroek/src/screens/Splash.js";
   var _components = {
@@ -110033,34 +110040,52 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     }
 
     (0, _createClass2.default)(Splash, [{
+      key: "GetTeamLogos",
+      value: function GetTeamLogos() {
+        var response;
+        return _regenerator.default.async(function GetTeamLogos$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _regenerator.default.awrap((0, _GameService.getTeamLogo)(_values.guidHerenD));
+
+              case 2:
+                response = _context.sent;
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        });
+      }
+    }, {
       key: "render",
       value: function render() {
         return _react.default.createElement(_reactNative.View, {
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 10
+            lineNumber: 17
           }
         }, _react.default.createElement(_NavBar.default, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 11
+            lineNumber: 18
           }
         }), _react.default.createElement(_reactNative.View, {
           style: styles.mainContainer,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 12
+            lineNumber: 19
           }
-        }, _react.default.createElement(_reactNative.Image, {
-          source: _$$_REQUIRE(_dependencyMap[12], "../assets/FullLogoBW.png"),
-          style: {
-            width: 300,
-            height: 150
-          },
+        }, _react.default.createElement(_reactNative.Button, {
+          onPress: this.GetTeamLogos,
+          title: "Fetch Team Logos",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 13
+            lineNumber: 20
           }
         })));
       }
@@ -110083,7 +110108,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       backgroundColor: 'white'
     }
   });
-},708,[1,571,22,23,30,33,36,49,199,2,709,702,703],"src/screens/Splash.js");
+},708,[1,571,102,22,23,30,33,36,49,199,2,709,702,706,707],"src/screens/Splash.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 

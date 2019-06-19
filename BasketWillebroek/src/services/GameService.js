@@ -1,7 +1,7 @@
 import { baseUrlAPI } from '../assets/values';
 const teamMatchesByGuidUrl = baseUrlAPI + "TeamMatchesByGuid?";
-const orgDetailByGuidUrl = baseUrlAPI + "OrgDetailByGuid";
-const teamDetailByGuidUrl = baseUrlAPI + "TeamDetailByGuid";
+const orgDetailByGuidUrl = baseUrlAPI + "OrgDetailByGuid?";
+const teamDetailByGuidUrl = baseUrlAPI + "TeamDetailByGuid?";
 
 export async function getTeamMatchesByGuid(teamGuid: string): any {
   try {
@@ -23,8 +23,8 @@ export async function getTeamMatchesByGuid(teamGuid: string): any {
 }
 
 export async function getTeamLogo(teamGuid: String): String {
-  var poules = [];
-  var teams = [];
+  var poules;
+  var teams;
 
   try {
     let response = await fetch(
@@ -35,8 +35,10 @@ export async function getTeamLogo(teamGuid: String): String {
     );
 
     let responseJson = await response.json();
-    var poules = responseJson.poules;
-    var teams = poules.teams.guid;
+    var poules = responseJson[0].poules;
+    var teams = poules[0].teams;
+    console.log(poules);
+    console.log(teams);
   } catch (e) {
     console.error(e);
   }
