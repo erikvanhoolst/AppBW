@@ -55,7 +55,7 @@ export default class GameCard extends Component {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    marginTop: 20,
+    marginTop: 18,
     marginLeft: 20,
     marginRight: 20,
     height: 120,
