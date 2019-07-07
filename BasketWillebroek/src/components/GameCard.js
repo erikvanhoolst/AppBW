@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert } from 'react-native';
-import { Match } from "../model/Match";
+import {StyleSheet, Text, View, Button, Image, TouchableHighlight, Alert} from 'react-native';
+import {Match} from "../model/Match";
 
 export default class GameCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       match: this.props.match,
-      uriUit: this.getTeamLogo(this.props.match.tUNaam),
-      uriThuis: this.getTeamLogo(this.props.match.tTNaam),
     };
   }
 
@@ -16,68 +14,41 @@ export default class GameCard extends Component {
     // alert('jeff');
   }
 
-  getTeamLogo(teamNaam: String): String {
-    let baseUrl = '/Users/erikvanhoolst/Desktop/PersonalProjects/Apps/AppBW/BasketWillebroek/src/assets/';
+  getTeamLogo(teamGuid: String): String {
+    var baseUrl = "https://vblcb.wisseq.eu/vbldata/organisatie/";
+    var extraUrl = "_Small.jpg";
+    var orgId = teamGuid.substring(0,8);
 
-    if (teamNaam.includes('Basket Willebroek')){
-      return  baseUrl + 'FullLogoBW.png';
-    } else if(teamNaam.includes('Okido Arendonk')){
-      return baseUrl + '/TeamLogos/BBCOkidoArendonk.jpg';
-    } else if(teamNaam.includes('Fellows Ekeren')){
-      return baseUrl + '/TeamLogos/FellowsEkerenBBC.jpg';
-    } else if(teamNaam.includes('Phantoms Basket Boom')){
-      return baseUrl + '/TeamLogos/PhantomsBasketBoom.jpg';
-    } else if(teamNaam.includes('Sobabee Zwijndrecht')){
-      return baseUrl + '/TeamLogos/SobabeeZwijndrecht.jpg';
-    } else if(teamNaam.includes('Schelle')){
-      return baseUrl + '/TeamLogos/BBCSchelle.jpg';
-    } else if(teamNaam.includes('Stabroek')){
-      return baseUrl + '/TeamLogos/BasketStabroek.jpg';
-    } else if(teamNaam.includes('Geranimo Bornem')){
-      return baseUrl + '/TeamLogos/GeranimoBornemBasket.jpg';
-    } else if(teamNaam.includes('Klein-Brabant')){
-      return baseUrl + '/TeamLogos/KleinBrabantBasket.jpg';
-    } else {
-      return baseUrl + '/okcLogo.png';
-    }
-
-    // switch (teamNaam) {
-    //   case teamNaam.includes("Basket Willebroek"):
-    //     return 'baseUrl + '/FullLogoBW.png';
-    //     break;
-    
-    //   default:
-    //     return 'baseUrl + '/okcLogo.png';
-    //     break;
-    // }
+    return baseUrl + orgId + extraUrl;
   }
 
   render() {
     return (
-      <TouchableHighlight style={styles.cardContainer} onPress={this.test} underlayColor={'#F8921E'} activeOpacity={1}>
-        <View style={styles.container}>
-          <View style={styles.leftAndRight}>
-            <Image source={{uri: this.state.uriThuis}} style={styles.logoTeams}/>
-            <Text style={styles.textTeams}>{this.state.match.tTNaam}</Text>
-          </View>
-          <View style={styles.midView}>
-            <View style={styles.topMid}>
-              <Text style={styles.textMatchInfo}>{this.state.match.datumString}</Text>
-              <Text style={styles.textMatchInfo}>{this.state.match.beginTijd}</Text>
+        <TouchableHighlight style={styles.cardContainer} onPress={this.test} underlayColor={'#F8921E'}
+                            activeOpacity={1}>
+          <View style={styles.container}>
+            <View style={styles.leftAndRight}>
+              <Image source={{uri: this.getTeamLogo(this.state.match.tTGUID)}} style={styles.logoTeams}/>
+              <Text style={styles.textTeams}>{this.state.match.tTNaam}</Text>
             </View>
-            <View style={styles.centerMid}>
-              <Text style={styles.textMatchInfo}>{this.state.match.uitslag}</Text>
+            <View style={styles.midView}>
+              <View style={styles.topMid}>
+                <Text style={styles.textMatchInfo}>{this.state.match.datumString}</Text>
+                <Text style={styles.textMatchInfo}>{this.state.match.beginTijd}</Text>
+              </View>
+              <View style={styles.centerMid}>
+                <Text style={styles.textMatchInfo}>{this.state.match.uitslag}</Text>
+              </View>
+              <View style={styles.bottomMid}>
+                <Text style={styles.textMatchInfo}>{this.state.match.accNaam}</Text>
+              </View>
             </View>
-            <View style={styles.bottomMid}>
-              <Text style={styles.textMatchInfo}>{this.state.match.accNaam}</Text>
+            <View style={styles.leftAndRight}>
+              <Image source={{uri: this.getTeamLogo(this.state.match.tUGUID)}} style={styles.logoTeams}/>
+              <Text style={styles.textTeams}>{this.state.match.tUNaam}</Text>
             </View>
           </View>
-          <View style={styles.leftAndRight}>
-            <Image source={{uri: this.state.uriUit}} style={styles.logoTeams}/>
-            <Text style={styles.textTeams}>{this.state.match.tUNaam}</Text>
-          </View>
-        </View>
-      </TouchableHighlight>
+        </TouchableHighlight>
     )
   }
 }
@@ -87,13 +58,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    height: '17%',
+    height: 120,
     borderStyle: 'solid',
     borderRadius: 10,
     borderWidth: 2,
     borderColor: 'black',
     shadowColor: 'gray',
-    shadowOffset: { width: 0, height: 5},
+    shadowOffset: {width: 0, height: 5},
     shadowOpacity: 0.6,
     shadowRadius: 3,
     backgroundColor: 'white',
@@ -146,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: 'Verdana',
     textAlign: 'center',
-    margin: 4 
+    margin: 4
   },
   textMatchInfo: {
     fontSize: 11,
@@ -159,5 +130,4 @@ const styles = StyleSheet.create({
     height: '55%',
     resizeMode: 'contain',
   }
-  
 });
