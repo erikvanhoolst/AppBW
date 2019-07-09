@@ -19,13 +19,26 @@ export default class Home extends Component {
 
   async componentDidMount(): void {
     await getTeamMatchesByGuid(guidHerenD).then(res => this.setState({matches: res, loading: false}));
-    this.setState({matchesSorted: this.state.matches.sort(
-        (a,b) => { return new Date(a.datumString) - new Date(b.datumString) })});
+    await this.sortGames();
   }
 
-  sortGames(): Match[] {
-    var matches = this.state.matches;
+  sortGames(): void {
+    let matches = this.state.matches;
+    matches.sort(function(a,b) {
+      let year = a.datumString.substring(6);
+      let month = a.datumString.substring(3,5);
+      let day = a.datumString.substring(0,2);
+      let date1 = new Date(year,month,day);
 
+      let year2 = b.datumString.substring(6);
+      let month2 = b.datumString.substring(3,5);
+      let day2 = b.datumString.substring(0,2);
+      let date2 = new Date(year2,month2,day2);
+
+      return date1 - date2;
+    });
+
+    this.setState({matchesSorted: matches});
   }
 
   render() {
