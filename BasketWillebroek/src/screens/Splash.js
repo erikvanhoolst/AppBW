@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, Image} from 'react-native';
-import SplashScreen from "react-native-splash-screen";
+import {StyleSheet, Text, View, Button, Image, Alert} from 'react-native';
 import NavBar from '../components/NavBar';
+
 
 export default class Splash extends Component {
 
-  render() {
+   render() {
     return (
         <View style={styles.container}>
           <NavBar/>
           <View style={styles.mainContainer}>
-            <Image
-                source={require('../assets/FullLogoBW.png')}
-                style={{width: 300, height: 150}}/>
+            <Text>My Name Jeff</Text>
           </View>
         </View>
 
@@ -29,7 +27,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    //backgroundColor: '#F8921E',
     backgroundColor: 'white'
   }
 });
